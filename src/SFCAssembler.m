@@ -1515,7 +1515,7 @@ return;\
                 }
                 NSArray<NSString *> *arguments = macro.isVAArgs? [argumentsString tokenizeByString:@"," maximumTokens:macro.arguments.count] :
                                                                  [argumentsString tokenizeByString:@","];
-                if (arguments[0].length == 0) {
+                if (arguments.count == 1 && arguments[0].length == 0) {
                     arguments = @[];
                 }
                 [self handleMacro:macro arguments:arguments];
