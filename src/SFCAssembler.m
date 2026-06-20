@@ -1411,8 +1411,8 @@ return;\
                     isPlusMinus = true;
                 }
                 else {
-                    SFCValue *value = [_evaluator getVariable:symbol];
-                    if (value) {
+                    SFCValue *value = [_evaluator getVariable:_definingStruct? [NSString stringWithFormat:@"%@%@", _definingStruct, symbol] : symbol];
+                    if (value && (!_definingStruct || value.isSymbol)) {
                         if (!isWeak) {
                             [_errors addErrorWithType:SFCError string:@"'%@' is already a defined %@", symbol, value.isSymbol? @"symbol" : @"variable"];
                         }
